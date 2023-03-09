@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "hash": "b942bfbdda4e223b52d6df2426ce55a8b9ace0c2",
+  "configuration": {
+    "entity": "demoprService.PurchaseOrders",
+    "phase": "before",
+    "events": [
+      ""
+    ]
+  },
+  "codes": [
+    {
+      "type": "Assignment",
+      "result": "data",
+      "expression": {
+        "syntax": "context.request.data",
+        "dependencies": [
+          "Variable"
+        ]
+      }
+    },
+    {
+      "type": "CustomCode",
+      "syntax": "data.RequestId = 'PR0001';"
+    }
+  ]
+}
