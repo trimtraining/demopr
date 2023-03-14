@@ -1,0 +1,1 @@
+using demoprService as service from '../../srv/service';

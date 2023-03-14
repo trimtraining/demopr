@@ -1,0 +1,71 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.demo.demopruifs.controller.Object" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" height="100%">
+    <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+        <headerTitle>
+            <ObjectPageHeader objectTitle="{RequestId}" />
+        </headerTitle>
+
+        <headerContent>
+            <m:ObjectAttribute title="" text="This example explains the rules for the rendering of sections" />
+        </headerContent>
+
+        <sections>
+            <ObjectPageSection>
+                <subSections>
+                    <ObjectPageSubSection title="General Info" titleUppercase="false">
+                        <blocks>
+                            <f:SimpleForm
+                                id="SimpleFormDisplay354"
+                                editable="false"
+                                layout="ResponsiveGridLayout"
+                                title="General Info"
+                                labelSpanXL="3"
+                                labelSpanL="3"
+                                labelSpanM="3"
+                                labelSpanS="12"
+                                adjustLabelSpan="false"
+                                emptySpanXL="4"
+                                emptySpanL="4"
+                                emptySpanM="4"
+                                emptySpanS="0"
+                                columnsXL="1"
+                                columnsL="1"
+                                columnsM="1"
+                                singleContainerFullSize="false"
+                            >
+                                <f:content>
+                                    <m:Label text="Vendor Code" />
+                                    <m:Text id="nameText" text="{VendorCode}" />
+                                </f:content>
+                            </f:SimpleForm>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <ObjectPageSection titleUppercase="false" title="Section 5">
+                <subSections>
+                    <ObjectPageSubSection title="Line Items" titleUppercase="false">
+                        <blocks>
+                            <m:Table id="idProductsTable" inset="false" items="{
+			path: 'items'
+		}">
+                                <m:columns>
+                                    <m:Column width="12em">
+                                        <m:Text text="Product" />
+                                    </m:Column>
+                                </m:columns>
+                                <m:items>
+                                    <m:ColumnListItem vAlign="Middle">
+                                        <m:cells>
+                                            <m:Text text="{MaterialCode}" />
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+</mvc:View>

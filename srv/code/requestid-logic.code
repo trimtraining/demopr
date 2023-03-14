@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "hash": "9f9f9a368deca4c8fcebfb586eaf31116852ef7a",
+  "configuration": {
+    "entity": "demoprService.PurchaseOrders",
+    "phase": "before",
+    "events": [
+      ""
+    ]
+  },
+  "codes": [
+    {
+      "type": "Assignment",
+      "result": "data",
+      "expression": {
+        "syntax": "context.request.data",
+        "dependencies": [
+          "Variable"
+        ]
+      }
+    },
+    {
+      "type": "CustomCode",
+      "syntax": "data.RequestId = 'PR0009';\ndata.Status = 'Open';"
+    }
+  ]
+}

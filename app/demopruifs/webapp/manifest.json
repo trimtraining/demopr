@@ -1,7 +1,7 @@
 {
     "_version": "1.49.0",
     "sap.app": {
-        "id": "com.demo.demoprui",
+        "id": "com.demo.demopruifs",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -11,9 +11,9 @@
         "description": "{{appDescription}}",
         "resources": "resources.json",
         "sourceTemplate": {
-            "id": "@sap/generator-fiori:lrop",
+            "id": "@sap/generator-fiori:worklist",
             "version": "1.9.1",
-            "toolsId": "0b84d246-d4cf-4085-b6bb-4d596320491c"
+            "toolsId": "647c3bf0-ef23-40b6-b6c8-3e84466439f9"
         },
         "dataSources": {
             "mainService": {
@@ -28,16 +28,16 @@
         },
         "crossNavigation": {
             "inbounds": {
-                "com-demo-demoprui-inbound": {
+                "com-demo-demopruifs-inbound": {
                     "signature": {
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "demopr",
+                    "semanticObject": "demoprfs",
                     "action": "display",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
-                    "icon": "sap-icon://my-sales-order"
+                    "icon": "sap-icon://sales-order-item"
                 }
             }
         }
@@ -65,8 +65,12 @@
             "libs": {
                 "sap.m": {},
                 "sap.ui.core": {},
-                "sap.ushell": {},
-                "sap.fe.templates": {}
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
             }
         },
         "contentDensities": {
@@ -77,7 +81,7 @@
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "com.demo.demoprui.i18n.i18n"
+                    "bundleName": "com.demo.demopruifs.i18n.i18n"
                 }
             },
             "": {
@@ -89,65 +93,70 @@
                     "autoExpandSelect": true,
                     "earlyRequests": true
                 }
-            },
-            "@i18n": {
-                "type": "sap.ui.model.resource.ResourceModel",
-                "uri": "i18n/i18n.properties"
             }
         },
         "resources": {
             "css": []
         },
         "routing": {
-            "config": {},
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "com.demo.demopruifs.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
             "routes": [
                 {
-                    "pattern": ":?query:",
-                    "name": "PurchaseOrdersList",
-                    "target": "PurchaseOrdersList"
+                    "pattern": "",
+                    "name": "worklist",
+                    "target": [
+                        "worklist"
+                    ]
                 },
                 {
-                    "pattern": "PurchaseOrders({key}):?query:",
-                    "name": "PurchaseOrdersObjectPage",
-                    "target": "PurchaseOrdersObjectPage"
+                    "pattern": "PurchaseOrders/{objectId}",
+                    "name": "object",
+                    "target": [
+                        "object"
+                    ]
                 }
             ],
             "targets": {
-                "PurchaseOrdersList": {
-                    "type": "Component",
-                    "id": "PurchaseOrdersList",
-                    "name": "sap.fe.templates.ListReport",
-                    "options": {
-                        "settings": {
-                            "entitySet": "PurchaseOrders",
-                            "variantManagement": "Page",
-                            "navigation": {
-                                "PurchaseOrders": {
-                                    "detail": {
-                                        "route": "PurchaseOrdersObjectPage"
-                                    }
-                                }
-                            }
-                        }
-                    }
+                "worklist": {
+                    "viewName": "Worklist",
+                    "viewId": "worklist",
+                    "viewLevel": 1,
+                    "title": "{i18n>worklistViewTitle}"
                 },
-                "PurchaseOrdersObjectPage": {
-                    "type": "Component",
-                    "id": "PurchaseOrdersObjectPage",
-                    "name": "sap.fe.templates.ObjectPage",
-                    "options": {
-                        "settings": {
-                            "editableHeaderContent": false,
-                            "entitySet": "PurchaseOrders"
-                        }
-                    }
+                "object": {
+                    "viewName": "Object",
+                    "viewId": "object",
+                    "viewLevel": 2,
+                    "title": "{i18n>objectViewTitle}"
+                },
+                "objectNotFound": {
+                    "viewName": "ObjectNotFound",
+                    "viewId": "objectNotFound"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
                 }
             }
+        },
+        "rootView": {
+            "viewName": "com.demo.demopruifs.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
         }
-    },
-    "sap.fiori": {
-        "registrationIds": [],
-        "archeType": "transactional"
     },
     "sap.cloud": {
         "public": true,

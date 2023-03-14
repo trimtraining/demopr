@@ -8,6 +8,17 @@ service demoprService
     @odata.draft.enabled
     entity PurchaseOrders as
         projection on my.PurchaseOrders;
+
+    function getpobystatus
+    (
+        poid : String(100)
+    )
+    returns many PurchaseOrders not null;
+
+    action getaction
+    (
+        input : String(100)
+    );
 }
 
 annotate demoprService with @requires :

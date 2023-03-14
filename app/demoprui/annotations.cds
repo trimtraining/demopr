@@ -112,3 +112,9 @@ annotate service.Items with @(
             Label : 'Quantity',
         },]
 );
+annotate service.PurchaseOrders with {
+    RequestId @Common.FieldControl : #ReadOnly
+};
+annotate service.PurchaseOrders with {
+    Status @Common.FieldControl : #ReadOnly
+};

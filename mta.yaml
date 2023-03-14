@@ -49,7 +49,7 @@ modules:
           sap.cloud.service: demopr
         - Authentication: OAuth2UserTokenExchange
           Name: demopr_demopr_auth
-          ServiceInstanceName: prdemo-xsuaa-service
+          ServiceInstanceName: demopr-xsuaa-service
           ServiceKeyName: demopr-auth-key
           URL: ~{srv-api/srv-url}
           sap.cloud.service: demopr
@@ -70,9 +70,23 @@ modules:
       - comdemodemoprui.zip
       name: comdemodemoprui
       target-path: resources/
+    - artifacts:
+      - comdemodemopruifs.zip
+      name: comdemodemopruifs
+      target-path: resources/
 - name: comdemodemoprui
   type: html5
   path: app/demoprui
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: comdemodemopruifs
+  type: html5
+  path: app/demopruifs
   build-parameters:
     build-result: dist
     builder: custom
