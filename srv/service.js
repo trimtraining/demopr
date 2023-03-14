@@ -31,7 +31,7 @@ module.exports = cds.service.impl(async function () {
 
         console.log(request);
         data = request.data;
-        data.RequestId = 'PR1111';
+        data.RequestId = 'PR'+Math.floor((Math.random()*100000) + 1);
         data.Status = 'New';
     });
 });

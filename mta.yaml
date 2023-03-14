@@ -41,7 +41,7 @@ modules:
   - name: srv-api
   parameters:
     content:
-      instance:
+      subaccount:
         destinations:
         - Name: demopr_demopr_html_repo_host
           ServiceInstanceName: demopr-html5-app-host-service

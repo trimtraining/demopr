@@ -99,7 +99,6 @@
             "css": []
         },
         "routing": {
-            "config": {},
             "routes": [
                 {
                     "pattern": ":?query:",
@@ -140,6 +139,15 @@
                             "editableHeaderContent": false,
                             "entitySet": "PurchaseOrders"
                         }
+                    }
+                }
+            }
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {
+                    "sap.fe.templates.ObjectPage.ObjectPageController#com.demo.demoprui::PurchaseOrdersObjectPage": {
+                        "controllerName": "com.demo.demoprui.ext.controller.ObjectPage"
                     }
                 }
             }
